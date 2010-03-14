@@ -1,0 +1,28 @@
+@CHARSET "ISO-8859-1";
+
+.bord {
+ border : 1px solid #999;
+ border-right : 2px solid #999; 
+ border-bottom : 3px solid #999;
+}
+
+
+#content .article {
+/* Il faut imposer la largeur sinon elle ne prend pas la largeur du conteneur mais du body */
+	width: 520px;
+}
+
+
+#formulaire_recherche #recherche {
+width:100px;
+border: 1px solid #999;
+border-right : 2px solid #999; 
+border-bottom : 3px solid #999;
+
+}
+#formulaire_recherche #recherche:focus {
+border: 1px solid #35537e;
+border-right : 2px solid #35537e; 
+border-bottom : 3px solid #35537e;
+  
+}
