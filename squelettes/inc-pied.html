@@ -1,0 +1,13 @@
+<div id="pied">
+<p>	[(#SESSION{id_auteur}|?{' '}) <a href="#URL_LOGOUT" rel="nofollow"><:icone_deconnecter:></a>]
+	[(#SESSION{id_auteur}|?{'',' '}) <a href="[(#URL_PAGE{login}|parametre_url{url,#SELF})]" rel="nofollow" class='login_modal'>
+	<img src="IMG/key.png" />
+	<:lien_connecter:></a>]
+	[(#AUTORISER{ecrire}) <a href="#EVAL{_DIR_RESTREINT_ABS}"><:espace_prive:></a>]
+</p>
+#FORMULAIRE_RECHERCHE
+</div>
+[(#REM)
+	Cette balise permet de deporter les calculs lourds (indexation etc)
+	dans une image cachee, ce qui evite de ralentir l'affichage des pages.
+]#SPIP_CRON

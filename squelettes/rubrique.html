@@ -1,0 +1,56 @@
+[(#REM)
+	Un cache plus court, pour la boucle syndic_articles
+]#CACHE{3600}
+<BOUCLE_principale(RUBRIQUES) {id_rubrique}>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" lang="#LANG" dir="#LANG_DIR">
+<head>
+<title>[(#NOM_SITE_SPIP|textebrut)]</title>
+[<meta name="description" content="(#DESCRIPTIF_SITE_SPIP|couper{150}|textebrut)" />]
+<INCLURE{fond=inc-head}{id_rubrique}>
+</head>
+<body>
+	[(#REM) Entete de la page + titre du site ]
+	<INCLURE{fond=inc-entete}{id_rubrique} >
+<div id="container">
+	[(#REM) Menu de navigation par rubriques ]
+	<INCLURE{fond=inc-rubriques}{id_rubrique} >
+
+	<div id="content" class="bord">
+		<p class="info">A la Une</p>
+		<BOUCLE_articles_a_la_une(ARTICLES) {id_rubrique} {par date}{inverse}{doublons} {pagination 1}>
+		<div class="article">
+			<h1> <a href="#URL_ARTICLE" rel="bookmark">#TITRE</a></h1>
+			#LOGO_ARTICLE_RUBRIQUE
+			<p>#TEXTE</p>
+		</div>
+		<p class="liens" > <a href="#URL_ARTICLE">En Savoir +</a></p>
+		</BOUCLE_articles_a_la_une>
+	</div>
+<!-- Autres articles -->
+<div id="autre-une">
+	<ul >
+		<BOUCLE_articles_recents(ARTICLES) {id_rubrique} {par date}{inverse}{doublons} {pagination 3}>
+		<li class="bord"> 
+		<h3><a href="#URL_ARTICLE" rel="bookmark">#SOUSTITRE</a></h3>
+		<p class="resume"><a href="#URL_ARTICLE">[(#INTRODUCTION|textebrut)]</a></p>
+		<p class="liens" ><a href="#URL_ARTICLE">En Savoir +</a></p>
+		</li>
+		</BOUCLE_articles_recents>
+	</ul>
+</div>
+
+<div id="articles" class="menu bord">
+  <h2>Derniers articles</h2>
+  <ul>
+<BOUCLE_autres_articles(ARTICLES) {id_rubrique}{par date}{inverse} {doublons} {pagination 5} >
+  <li><a href="#URL_ARTICLE" rel="bookmark">#TITRE</a></li>
+</BOUCLE_autres_articles>    
+  </ul>
+</div>
+</div>
+[(#REM) Pied de page ]
+<INCLURE{fond=inc-pied}{skel=#SQUELETTE}>
+</body>
+</html>
+</BOUCLE_principale>

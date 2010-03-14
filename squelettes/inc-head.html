@@ -1,0 +1,40 @@
+[(#REM)
+	Head standard de toutes les pages ; les elements specifiques
+	(title, description) figurent dans le squelette article.html
+]
+[(#REM) Preciser le charset ]
+<meta http-equiv="Content-Type" content="text/html; charset=#CHARSET" />
+
+[(#REM) Fierement fabrique avec SPIP ]
+<meta name="generator" content="SPIP[ (#SPIP_VERSION)]" />
+
+#INSERT_HEAD
+<link href="css/font.reset.css" rel="stylesheet" type="text/css" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="css/jquery.lightbox-0.5.css" media="screen" />
+<script type="text/javascript" src="js/jquery.lightbox-0.5.js"></script>
+<script type="text/javascript">
+    $(function() {
+        $(".galerie").lightBox();
+    });
+</script>
+
+
+<!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>-->
+
+<!--[if IE]> 
+<script type="text/javascript" src="js/roundies.js"> 
+<script src="js/html5-ie.js"></script>
+ <link href="css/style.ie.css" rel="stylesheet" type="text/css" />
+</script>
+<![endif]-->
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-12959011-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>

@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" lang="#LANG" dir="#LANG_DIR">
+<head>
+<title><:resultats_recherche:> - [(#NOM_SITE_SPIP|textebrut)]</title>
+<INCLURE{fond=inc-head}>
+<meta name="robots" content="none" />
+</head>
+<body class="page_recherche pas_surlignable">
+<div id="page_article">
+
+	[(#REM) Entete de la page + titre du site ]
+	<INCLURE{fond=inc-entete}>
+	<div id="container">
+	[(#REM) Menu de navigation par rubriques ]
+	<INCLURE{fond=inc-rubriques}{id_article}>
+	
+	[(#REM) Contenu principal : Resultats de la recherche ]
+	<div id="content" class="bord">
+		[<div class="cartouche">
+			<h1><:resultats_recherche:></h1>
+			<p class="soustitre">&#171;&nbsp;(#RECHERCHE)&nbsp;&#187;</p>
+		</div>]
+				[(#REM) Articles trouves ]
+		<B_articles>
+		<div>
+			#ANCRE_PAGINATION
+			<h2><:articles:> (#GRAND_TOTAL)</h2>
+			<ul>
+				<BOUCLE_articles(ARTICLES) {recherche} {par points}{inverse} {pagination}>
+				<li><a href="#URL_ARTICLE">#TITRE</a></li>
+				</BOUCLE_articles>
+			</ul>
+			[<p class="pagination">(#PAGINATION)</p>]
+		</div>
+		</B_articles>
+		[(#REM) Rubriques trouvees ]
+		<B_rubriques>
+		<div>
+			#ANCRE_PAGINATION
+			<h2><:rubriques:> (#GRAND_TOTAL)</h2>
+			<ul>
+				<BOUCLE_rubriques(RUBRIQUES) {recherche} {par points}{inverse} {pagination 5}>
+				<li><a href="#URL_RUBRIQUE">#TITRE</a></li>
+				</BOUCLE_rubriques>
+			</ul>
+			[<p class="pagination">(#PAGINATION)</p>]
+		</div>
+		</B_rubriques>
+	</div>
+</div>
+[(#REM) Pied de page ]
+<INCLURE{fond=inc-pied}{skel=#SQUELETTE}>
+
+</body>
+</html>
